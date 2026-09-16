@@ -1,14 +1,11 @@
-import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { usePhotograph, usePhotographs } from '../hooks/usePhotographs'
 import PhotoCard from '../components/photography/PhotoCard'
-import ImageViewer from '../components/photography/ImageViewer'
 
 export default function PhotographyDetailPage() {
   const { slug } = useParams()
   const photo = usePhotograph(slug)
   const all = usePhotographs()
-  const [viewerIndex, setViewerIndex] = useState(null)
 
   if (!photo) {
     return (
@@ -24,10 +21,6 @@ export default function PhotographyDetailPage() {
   const more = all.filter((item) => item.id !== photo.id).slice(0, 3)
   const gallery = photo.images?.length ? photo.images : [photo.imageUrl]
 
-  function openAt(index) {
-    setViewerIndex(index)
-  }
-
   return (
     <article>
       <header className="container-site py-16 md:py-24">
@@ -41,14 +34,14 @@ export default function PhotographyDetailPage() {
         <p className="mt-6 max-w-xl text-[1.05rem] leading-8 text-muted">{photo.description}</p>
       </header>
 
-      <button type="button" className="block w-full overflow-hidden" onClick={() => openAt(0)}>
+      <div className="block w-full overflow-hidden">
         <img src={gallery[0]} alt={photo.title} className="max-h-[92svh] w-full object-cover" />
-      </button>
+      </div>
 
       {gallery[1] ? (
-        <button type="button" className="mt-3 block w-full" onClick={() => openAt(1)}>
+        <div className="mt-3 block w-full">
           <img src={gallery[1]} alt="" className="w-full object-cover" />
-        </button>
+        </div>
       ) : null}
 
       <div className="container-site py-16 md:py-24">
@@ -61,15 +54,14 @@ export default function PhotographyDetailPage() {
 
       {gallery.length > 2 ? (
         <div className="container-site grid gap-3 pb-16 sm:grid-cols-2">
-          {gallery.slice(2).map((src, index) => (
-            <button
-              key={src}
-              type="button"
-              className="overflow-hidden"
-              onClick={() => openAt(index + 2)}
-            >
-              <img src={src} alt="" className="aspect-[4/5] w-full object-cover transition duration-700 hover:scale-[1.02]" />
-            </button>
+          {gallery.slice(2).map((src) => (
+            <div key={src} className="overflow-hidden">
+              <img
+                src={src}
+                alt=""
+                className="aspect-[4/5] w-full object-cover transition duration-700 hover:scale-[1.02]"
+              />
+            </div>
           ))}
         </div>
       ) : null}
@@ -89,22 +81,6 @@ export default function PhotographyDetailPage() {
           </div>
         </div>
       </section>
-
-      <ImageViewer
-        images={gallery}
-        index={viewerIndex}
-        onClose={() => setViewerIndex(null)}
-        onPrev={() =>
-          setViewerIndex((current) =>
-            current == null ? current : (current - 1 + gallery.length) % gallery.length,
-          )
-        }
-        onNext={() =>
-          setViewerIndex((current) =>
-            current == null ? current : (current + 1) % gallery.length,
-          )
-        }
-      />
     </article>
   )
 }

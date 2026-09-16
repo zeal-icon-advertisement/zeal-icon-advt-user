@@ -29,7 +29,7 @@ export default function Header() {
   }, [open])
 
   return (
-    <header className="sticky top-0 z-50 bg-transparent transition-all">
+    <header className="fixed inset-x-0 top-0 z-50 bg-transparent">
       <div
         className={`container-site flex items-center gap-3 ${
           compact ? 'py-2.5' : 'py-3'
@@ -38,7 +38,7 @@ export default function Header() {
         {/* Mobile: hamburger on left */}
         <button
           type="button"
-          className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line/60 bg-transparent text-fg transition [text-shadow:0_1px_8px_rgb(0_0_0_/_0.45)] hover:border-accent hover:text-accent lg:hidden"
+          className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-transparent text-fg transition hover:text-accent lg:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-label="Menu"
@@ -56,7 +56,7 @@ export default function Header() {
               key={link.to}
               to={link.to}
               className={({ isActive }) =>
-                `inline-flex items-center gap-2 label transition [text-shadow:0_1px_10px_rgb(0_0_0_/_0.4)] ${
+                `inline-flex items-center gap-2 label transition ${
                   isActive ? 'text-accent' : 'text-fg/90 hover:text-fg'
                 }`
               }
@@ -79,7 +79,7 @@ export default function Header() {
           <button
             type="button"
             onClick={toggleTheme}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line/60 bg-transparent text-fg transition [text-shadow:0_1px_8px_rgb(0_0_0_/_0.45)] hover:border-accent hover:text-accent"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-transparent text-fg transition hover:text-accent"
             aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
           >
             {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
@@ -89,7 +89,7 @@ export default function Header() {
 
       {open ? (
         <nav
-          className="max-h-[calc(100svh-4rem)] overflow-y-auto border-t border-line bg-elevated px-5 py-6 lg:hidden"
+          className="max-h-[calc(100svh-4rem)] overflow-y-auto bg-elevated/95 px-5 py-6 backdrop-blur-sm lg:hidden"
           aria-label="Mobile"
         >
           {NAV_LINKS.map((link) => (

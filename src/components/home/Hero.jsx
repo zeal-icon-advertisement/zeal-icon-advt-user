@@ -21,7 +21,7 @@ export default function Hero({ photograph }) {
 
         <h1 className="max-w-4xl font-display text-[clamp(2.35rem,10vw,6.2rem)] leading-[0.95]">
           Zeal Icon
-          <span className="block italic text-accent">Photography</span>
+          <span className="block italic text-accent">Advertisement</span>
         </h1>
 
         <p className="mt-4 max-w-md text-[0.95rem] leading-7 text-fg/80 md:mt-5 md:text-[1rem]">

@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom'
 
 const variants = {
-  solid: 'bg-fg text-invert hover:bg-accent hover:text-fg',
+  solid:
+    'bg-accent text-white hover:bg-accent-hover active:bg-accent-active',
   ghost: 'text-fg hover:text-accent',
   cta:
-    'bg-accent text-invert shadow-[0_10px_30px_rgb(224_122_61_/_0.28)] hover:brightness-110 hover:-translate-y-0.5 active:translate-y-0',
+    'bg-accent text-white shadow-[0_10px_30px_rgb(190_0_0_/_0.28)] hover:bg-accent-hover hover:-translate-y-0.5 active:translate-y-0 active:bg-accent-active',
   book:
-    'border-2 border-accent bg-accent-soft text-accent shadow-[0_10px_28px_rgb(224_122_61_/_0.16)] hover:bg-accent hover:text-invert hover:-translate-y-0.5 active:translate-y-0',
+    'border-2 border-accent bg-accent-muted text-accent shadow-[0_10px_28px_rgb(190_0_0_/_0.16)] hover:bg-accent hover:text-white hover:-translate-y-0.5 active:translate-y-0 active:bg-accent-active',
 }
 
 export default function Button({

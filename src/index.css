@@ -8,10 +8,14 @@
   --fg: #141311;
   --fg-muted: #5c574e;
   --fg-subtle: #8a8478;
-  --accent: #c45c26;
-  --accent-soft: #f3e4d8;
+  /* Brand accent: Zeal Icon #BE0000 */
+  --accent: #be0000;
+  --accent-hover: #d40a0a;
+  --accent-active: #a50000;
+  --accent-soft: #f6e8e8;
+  --accent-muted: rgb(190 0 0 / 0.14);
   --line: rgb(20 19 17 / 0.12);
-  --header: rgb(244 241 234 / 0.82);
+  --header: transparent;
   --invert: #fbfaf6;
 }
 
@@ -22,10 +26,14 @@
   --fg: #f3efe6;
   --fg-muted: #a39b90;
   --fg-subtle: #6e675c;
-  --accent: #e07a3d;
-  --accent-soft: #3a2418;
+  /* Same brand red; softer wash for dark surfaces */
+  --accent: #be0000;
+  --accent-hover: #d40a0a;
+  --accent-active: #a50000;
+  --accent-soft: #2a1212;
+  --accent-muted: rgb(190 0 0 / 0.22);
   --line: rgb(243 239 230 / 0.12);
-  --header: rgb(14 13 12 / 0.78);
+  --header: transparent;
   --invert: #0e0d0c;
 }
 
@@ -39,7 +47,10 @@
   --color-muted: var(--fg-muted);
   --color-subtle: var(--fg-subtle);
   --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-active: var(--accent-active);
   --color-accent-soft: var(--accent-soft);
+  --color-accent-muted: var(--accent-muted);
   --color-line: var(--line);
   --color-invert: var(--invert);
 }

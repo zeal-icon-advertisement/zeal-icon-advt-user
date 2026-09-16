@@ -12,7 +12,7 @@ export default function Footer() {
         <div className="grid gap-10 md:grid-cols-12 md:items-start md:gap-8">
           {/* Brand */}
           <div className="md:col-span-5">
-            <Wordmark to="/" />
+            <Wordmark to="/" size="footer" />
             <p className="mt-4 max-w-xs text-sm leading-7 text-muted">
               Photography now. Magazines and articles soon.
             </p>
@@ -29,7 +29,7 @@ export default function Footer() {
                 <li key={link.to}>
                   <Link
                     to={link.to}
-                    className="inline-flex items-center gap-2 text-sm text-muted transition hover:text-fg"
+                    className="inline-flex items-center gap-2 text-sm text-muted transition hover:text-accent"
                   >
                     {link.label}
                     {link.soon ? <SoonBadge /> : null}

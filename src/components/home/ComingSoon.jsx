@@ -13,7 +13,7 @@ export default function ComingSoon() {
         <div className="mt-12 grid gap-4 md:grid-cols-2">
           <Link
             to="/magazines"
-            className="group relative flex min-h-[220px] flex-col justify-between overflow-hidden bg-soft p-8 transition hover:bg-accent-soft md:min-h-[280px]"
+            className="group relative flex min-h-[220px] flex-col justify-between overflow-hidden border border-transparent bg-soft p-8 transition hover:border-accent/35 hover:bg-accent-soft md:min-h-[280px]"
           >
             <div className="flex items-start justify-between gap-4">
               <p className="label text-muted">Magazine</p>
@@ -29,7 +29,7 @@ export default function ComingSoon() {
 
           <Link
             to="/articles"
-            className="group relative flex min-h-[220px] flex-col justify-between overflow-hidden bg-fg p-8 text-invert transition md:min-h-[280px]"
+            className="group relative flex min-h-[220px] flex-col justify-between overflow-hidden border border-transparent bg-fg p-8 text-invert transition hover:border-accent/50 md:min-h-[280px]"
           >
             <div className="flex items-start justify-between gap-4">
               <p className="label text-invert/60">Articles</p>

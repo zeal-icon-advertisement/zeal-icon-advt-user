@@ -183,7 +183,7 @@ export default function BookShootPage() {
                       !available
                         ? 'cursor-not-allowed border-line text-subtle line-through opacity-50'
                         : active
-                          ? 'border-accent bg-fg text-invert'
+                          ? 'border-accent bg-accent text-white'
                           : 'border-line text-muted hover:border-fg/40 hover:text-fg'
                     }`}
                   >

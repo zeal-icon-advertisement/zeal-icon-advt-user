@@ -14,7 +14,7 @@ export const services = [
     id: 'wedding',
     title: 'Wedding Shoots',
     description: 'Full-day wedding coverage with an editorial eye.',
-    href: '/book?service=wedding-shoots',
+    href: '/photography?category=wedding-shoots',
     status: 'available',
     kind: 'photography',
   },
@@ -22,7 +22,7 @@ export const services = [
     id: 'pre-wedding',
     title: 'Pre-Wedding Shoots',
     description: 'Couples sessions before the big day.',
-    href: '/book?service=pre-wedding-shoots',
+    href: '/photography?category=pre-wedding-shoots',
     status: 'available',
     kind: 'photography',
   },
@@ -30,7 +30,7 @@ export const services = [
     id: 'corporate',
     title: 'Corporate Events',
     description: 'Conferences, launches, and brand moments.',
-    href: '/book?service=corporate-events-shoots',
+    href: '/photography?category=corporate-events-shoots',
     status: 'available',
     kind: 'photography',
   },
@@ -38,7 +38,7 @@ export const services = [
     id: 'promotional',
     title: 'Promotional Shoots',
     description: 'Campaign stills and product storytelling.',
-    href: '/book?service=promotional-shoots',
+    href: '/photography?category=promotional-shoots',
     status: 'available',
     kind: 'photography',
   },
@@ -46,7 +46,7 @@ export const services = [
     id: 'interior',
     title: 'Interior Shoots',
     description: 'Spaces photographed with warmth and detail.',
-    href: '/book?service=interior-shoot',
+    href: '/photography?category=interior-shoot',
     status: 'available',
     kind: 'photography',
   },
@@ -72,9 +72,10 @@ export const services = [
 export const studioContact = {
   email: 'studio@zealicon.example',
   phoneDisplay: '+91 98765 43210',
-  whatsapp: '919876543210',
+  whatsapp: '7499774641',
+  address: 'Koregaon Park, Pune, Maharashtra 411001',
   instagram: 'https://instagram.com/zealiconadvertisement',
-  linkedin: 'https://linkedin.com/company/zealicon-advertisement',
+  linkedin: 'https://www.linkedin.com/in/zeal-icon-advertisement-149a80426/',
 }
 
 export const socialLinks = [
@@ -87,12 +88,6 @@ export const socialLinks = [
       'Hi Zeal Icon Advertisement, I would like to inquire about a photography shoot.',
     )}`,
   },
-]
-
-export const TIME_SLOTS = [
-  { id: '10:00', label: '10:00 AM' },
-  { id: '13:00', label: '1:00 PM' },
-  { id: '16:00', label: '4:00 PM' },
 ]
 
 export const photographs = [

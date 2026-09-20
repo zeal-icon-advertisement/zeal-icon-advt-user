@@ -1,21 +1,6 @@
 @import "tailwindcss";
 
-:root,
-[data-theme="light"] {
-  --bg: #f4f1ea;
-  --bg-elevated: #fbfaf6;
-  --bg-soft: #ebe6dc;
-  --fg: #141311;
-  --fg-muted: #5c574e;
-  --fg-subtle: #8a8478;
-  --accent: #c45c26;
-  --accent-soft: #f3e4d8;
-  --line: rgb(20 19 17 / 0.12);
-  --header: rgb(244 241 234 / 0.82);
-  --invert: #fbfaf6;
-}
-
-[data-theme="dark"] {
+:root {
   --bg: #0e0d0c;
   --bg-elevated: #161513;
   --bg-soft: #1c1b18;
@@ -25,12 +10,13 @@
   --accent: #e07a3d;
   --accent-soft: #3a2418;
   --line: rgb(243 239 230 / 0.12);
-  --header: rgb(14 13 12 / 0.78);
+  --header: rgb(14 13 12 / 0.92);
   --invert: #0e0d0c;
 }
 
 @theme {
   --font-display: "Instrument Serif", "Times New Roman", serif;
+  --font-service: "Cormorant Garamond", "Times New Roman", serif;
   --font-sans: "Manrope", "Segoe UI", sans-serif;
   --color-bg: var(--bg);
   --color-elevated: var(--bg-elevated);
@@ -71,6 +57,11 @@ img {
   letter-spacing: -0.03em;
 }
 
+.font-service {
+  font-family: var(--font-service);
+  letter-spacing: -0.02em;
+}
+
 .container-site {
   width: min(1240px, calc(100% - 2rem));
   margin-inline: auto;
@@ -96,11 +87,149 @@ img {
 }
 
 .photo-zoom {
-  transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 1.15s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.group:hover .photo-zoom {
+.group:hover .photo-zoom,
+.photo-zoom:hover {
   transform: scale(1.045);
+}
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.4rem;
+  height: 1px;
+  width: 0;
+  background: currentColor;
+  transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-link:hover::after,
+.nav-link.is-active::after {
+  width: 100%;
+}
+
+.btn-frame {
+  position: relative;
+}
+
+.btn-frame::after {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border: 1px solid transparent;
+  border-radius: inherit;
+  transition: border-color 0.35s ease;
+  pointer-events: none;
+}
+
+.btn-frame:hover::after {
+  border-color: color-mix(in srgb, var(--fg) 28%, transparent);
+}
+
+.btn-cta {
+  animation: btn-pulse 2.4s ease-in-out infinite;
+}
+
+.btn-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+    110deg,
+    transparent 35%,
+    rgb(255 255 255 / 0.32) 50%,
+    transparent 65%
+  );
+  background-size: 220% 100%;
+  animation: btn-shine 2.8s ease-in-out infinite;
+}
+
+.btn-cta:hover {
+  animation-play-state: paused;
+}
+
+.btn-cta:hover::before {
+  animation-play-state: paused;
+}
+
+@keyframes btn-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgb(243 239 230 / 0.05), 0 8px 22px rgb(243 239 230 / 0.08);
+  }
+  50% {
+    box-shadow: 0 0 0 7px rgb(243 239 230 / 0.16), 0 10px 28px rgb(243 239 230 / 0.22);
+  }
+}
+
+@keyframes btn-shine {
+  0% {
+    background-position: 120% 0;
+  }
+  100% {
+    background-position: -120% 0;
+  }
+}
+
+.social-icon {
+  position: relative;
+  z-index: 0;
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.35s ease,
+    filter 0.35s ease;
+}
+
+.social-icon:hover {
+  transform: translateY(-2px) scale(1.08);
+  opacity: 0.92;
+  filter: brightness(1.08);
+}
+
+.hero-image {
+  animation: hero-drift 22s ease-out forwards;
+  will-change: transform;
+}
+
+.hero-copy,
+.hero-copy-delay,
+.hero-copy-late {
+  opacity: 0;
+  animation: reveal 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.hero-copy {
+  animation-delay: 0.12s;
+}
+
+.hero-copy-delay {
+  animation-delay: 0.28s;
+}
+
+.hero-copy-late {
+  animation-delay: 0.48s;
+}
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: none;
 }
 
 .reveal {
@@ -116,27 +245,108 @@ img {
   }
 }
 
+@keyframes hero-drift {
+  from {
+    transform: scale(1.04);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
+.soon-page {
+  animation: soon-enter 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.soon-dot {
+  display: inline-block;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: var(--fg);
+  animation: soon-blink 1.6s ease-in-out infinite;
+}
+
+.soon-notice {
+  animation: soon-enter 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+}
+
+@keyframes soon-enter {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes soon-blink {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes soon-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgb(243 239 230 / 0.04);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgb(243 239 230 / 0.06);
+  }
+}
+
+.services-marquee-mask {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+}
+
+.services-marquee {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
 .field {
+  display: block;
   width: 100%;
+  min-height: 3rem;
+  box-sizing: border-box;
   border: 1px solid var(--line);
+  border-radius: 0.7rem;
   background: var(--bg);
   color: var(--fg);
-  padding: 0.85rem 1rem;
-  font: inherit;
+  padding: 0.8rem 1rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+  line-height: 1.5;
   outline: none;
   transition: border-color 0.2s ease;
 }
 
 .field:focus {
-  border-color: var(--accent);
+  border-color: color-mix(in srgb, var(--fg) 45%, transparent);
 }
 
 .field::placeholder {
   color: var(--fg-subtle);
 }
 
+textarea.field {
+  min-height: 148px;
+  padding-top: 0.85rem;
+}
+
 select.field {
   appearance: none;
+  height: 3rem;
+  min-height: 3rem;
   background-image: linear-gradient(45deg, transparent 50%, var(--fg-muted) 50%),
     linear-gradient(135deg, var(--fg-muted) 50%, transparent 50%);
   background-position:
@@ -151,8 +361,19 @@ select.field {
 
 @media (prefers-reduced-motion: reduce) {
   .reveal,
+  .reveal-on-scroll,
+  .hero-copy,
+  .hero-copy-delay,
+  .hero-copy-late,
+  .hero-image,
   .photo-zoom,
-  .group:hover .photo-zoom {
+  .group:hover .photo-zoom,
+  .photo-zoom:hover,
+  .social-icon:hover,
+  .btn-frame:hover,
+  .soon-page,
+  .soon-notice,
+  .soon-dot {
     animation: none;
     opacity: 1;
     transform: none;

@@ -16,10 +16,10 @@ export default function CategoryFilter({ categories, active, onChange }) {
             role="tab"
             aria-selected={selected}
             onClick={() => onChange(item.slug)}
-            className={`border-b-2 pb-2 text-[0.7rem] font-semibold tracking-[0.06em] uppercase transition duration-300 sm:text-[0.72rem] ${
+            className={`pb-2 text-[0.7rem] font-semibold tracking-[0.06em] uppercase transition duration-300 sm:text-[0.72rem] ${
               selected
-                ? 'border-accent text-fg'
-                : 'border-transparent text-muted hover:text-fg'
+                ? 'border-b-2 border-accent text-fg'
+                : 'border-b-2 border-transparent text-muted hover:text-fg'
             }`}
           >
             {item.name}

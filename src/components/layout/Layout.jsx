@@ -1,12 +1,15 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 import Header from './Header'
 import Footer from './Footer'
 
 export default function Layout() {
+  const { pathname } = useLocation()
+  const home = pathname === '/'
+
   return (
     <div className="flex min-h-svh flex-col bg-bg text-fg">
       <Header />
-      <main className="flex-1">
+      <main className={`relative z-0 flex-1 ${home ? '' : 'pt-20'}`}>
         <Outlet />
       </main>
       <Footer />

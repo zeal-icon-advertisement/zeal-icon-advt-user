@@ -1,12 +1,9 @@
 import { Link } from 'react-router-dom'
 
 const variants = {
-  solid: 'bg-fg text-invert hover:bg-accent hover:text-fg',
-  ghost: 'text-fg hover:text-accent',
-  cta:
-    'bg-accent text-invert shadow-[0_10px_30px_rgb(224_122_61_/_0.28)] hover:brightness-110 hover:-translate-y-0.5 active:translate-y-0',
-  book:
-    'border-2 border-accent bg-accent-soft text-accent shadow-[0_10px_28px_rgb(224_122_61_/_0.16)] hover:bg-accent hover:text-invert hover:-translate-y-0.5 active:translate-y-0',
+  solid: 'btn-frame bg-fg text-invert hover:bg-[#ddd6c8]',
+  ghost: 'text-fg hover:text-muted',
+  cta: 'btn-frame relative rounded-xl bg-fg text-invert shadow-[0_10px_28px_rgb(243_239_230_/_0.08)] hover:bg-[#e8e2d4]',
 }
 
 export default function Button({
@@ -19,9 +16,11 @@ export default function Button({
   type = 'button',
   onClick,
   disabled = false,
+  glow,
 }) {
   const tone = variant || (ghost ? 'ghost' : 'solid')
-  const cls = `inline-flex items-center justify-center gap-2 px-6 py-3 text-[0.68rem] font-semibold tracking-[0.18em] uppercase transition duration-300 disabled:cursor-not-allowed disabled:opacity-45 disabled:shadow-none disabled:translate-y-0 ${variants[tone]} ${className}`
+  const shine = glow ?? tone === 'cta'
+  const cls = `inline-flex items-center justify-center gap-2 px-6 py-3 text-[0.68rem] font-semibold tracking-[0.18em] uppercase transition duration-300 ease-out will-change-transform hover:scale-[1.03] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-45 disabled:shadow-none disabled:hover:scale-100 ${variants[tone]} ${shine && tone === 'cta' ? 'btn-cta' : ''} ${className}`
 
   if (to) {
     return (

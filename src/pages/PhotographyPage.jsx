@@ -4,6 +4,7 @@ import { PHOTOGRAPHY_CATEGORIES } from '../lib/navigation'
 import { usePhotographs } from '../hooks/usePhotographs'
 import CategoryFilter from '../components/ui/CategoryFilter'
 import PhotoCard from '../components/photography/PhotoCard'
+import Reveal from '../components/ui/Reveal'
 
 export default function PhotographyPage() {
   const photographs = usePhotographs()
@@ -48,9 +49,9 @@ export default function PhotographyPage() {
                   ? 'lg:col-span-7'
                   : 'lg:col-span-4'
             return (
-              <div key={photo.id} className={span}>
+              <Reveal key={photo.id} className={span} delay={(index % 6) * 50}>
                 <PhotoCard photo={photo} large={index % 7 === 0} />
-              </div>
+              </Reveal>
             )
           })}
         </div>

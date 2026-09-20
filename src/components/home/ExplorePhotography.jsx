@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { PHOTOGRAPHY_CATEGORIES } from '../../lib/navigation'
 import CategoryFilter from '../ui/CategoryFilter'
 import PhotoCard from '../photography/PhotoCard'
+import Reveal from '../ui/Reveal'
 
 export default function ExplorePhotography({ photographs }) {
   const [active, setActive] = useState('all')
@@ -18,18 +19,20 @@ export default function ExplorePhotography({ photographs }) {
   return (
     <section className="border-t border-line bg-elevated">
       <div className="container-site py-16 md:py-24">
-        <div className="mb-6 md:mb-8">
+        <Reveal>
           <p className="label text-accent">Photography</p>
           <h2 className="mt-3 font-display text-3xl md:text-4xl">Explore</h2>
-        </div>
+        </Reveal>
 
-        <div className="mb-10">
+        <div className="mt-8 mb-10">
           <CategoryFilter categories={PHOTOGRAPHY_CATEGORIES} active={active} onChange={setActive} />
         </div>
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((photo) => (
-            <PhotoCard key={photo.id} photo={photo} />
+          {filtered.map((photo, index) => (
+            <Reveal key={photo.id} delay={index * 70}>
+              <PhotoCard photo={photo} />
+            </Reveal>
           ))}
         </div>
 
@@ -37,7 +40,7 @@ export default function ExplorePhotography({ photographs }) {
           <p className="mt-12 text-center text-muted">No projects in this category yet.</p>
         ) : (
           <div className="mt-12 text-center">
-            <Link to="/photography" className="label text-muted hover:text-accent">
+            <Link to="/photography" className="label text-muted transition duration-300 hover:text-accent">
               Open full archive →
             </Link>
           </div>

@@ -10,7 +10,6 @@ import {
   MagazinesPage,
   NotFoundPage,
 } from './pages/StudioPages'
-import BookShootPage from './pages/BookShootPage'
 
 export default function App() {
   return (
@@ -20,7 +19,7 @@ export default function App() {
           <Route index element={<HomePage />} />
           <Route path="photography" element={<PhotographyPage />} />
           <Route path="photography/:slug" element={<PhotographyDetailPage />} />
-          <Route path="book" element={<BookShootPage />} />
+          <Route path="book" element={<Navigate to="/contact" replace />} />
           <Route path="magazines" element={<MagazinesPage />} />
           <Route path="articles" element={<ArticlesPage />} />
           <Route path="about" element={<AboutPage />} />

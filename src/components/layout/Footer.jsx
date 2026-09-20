@@ -4,13 +4,13 @@ import SoonBadge from '../ui/SoonBadge'
 import Button from '../ui/Button'
 import SocialIcons from '../ui/SocialIcons'
 import { NAV_LINKS } from '../../lib/navigation'
+import { studioContact } from '../../data/placeholderContent'
 
 export default function Footer() {
   return (
-    <footer className="border-t border-line bg-elevated">
+    <footer className="relative z-0 border-t border-line bg-elevated">
       <div className="container-site py-12 md:py-14">
         <div className="grid gap-10 md:grid-cols-12 md:items-start md:gap-8">
-          {/* Brand */}
           <div className="md:col-span-5">
             <Wordmark to="/" />
             <p className="mt-4 max-w-xs text-sm leading-7 text-muted">
@@ -21,7 +21,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Links */}
           <div className="md:col-span-3">
             <p className="label text-subtle">Explore</p>
             <ul className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3 md:grid-cols-1">
@@ -29,7 +28,7 @@ export default function Footer() {
                 <li key={link.to}>
                   <Link
                     to={link.to}
-                    className="inline-flex items-center gap-2 text-sm text-muted transition hover:text-fg"
+                    className="inline-flex items-center gap-2 text-sm text-muted transition duration-300 hover:text-fg hover:translate-x-0.5"
                   >
                     {link.label}
                     {link.soon ? <SoonBadge /> : null}
@@ -39,15 +38,26 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Actions */}
-          <div className="md:col-span-4 md:flex md:flex-col md:items-end">
-            <p className="label text-subtle md:text-right">Connect</p>
-            <div className="mt-4 flex w-full flex-col gap-3 md:max-w-[220px]">
-              <Button to="/contact" variant="cta" className="w-full px-5 py-3">
+          <div className="md:col-span-4 md:text-right">
+            <p className="label text-subtle">Studio</p>
+            <div className="mt-4 space-y-3 text-sm leading-7 text-muted">
+              <a
+                href={`mailto:${studioContact.email}`}
+                className="block transition duration-300 hover:text-fg"
+              >
+                {studioContact.email}
+              </a>
+              <a
+                href={`tel:+${studioContact.whatsapp}`}
+                className="block transition duration-300 hover:text-fg"
+              >
+                {studioContact.phoneDisplay}
+              </a>
+              <p className="max-w-xs md:ml-auto">{studioContact.address}</p>
+            </div>
+            <div className="mt-6 md:flex md:justify-end">
+              <Button to="/contact" variant="cta" className="w-full px-5 py-3 md:w-auto">
                 Contact Us
-              </Button>
-              <Button to="/book" variant="book" className="w-full px-5 py-3">
-                Book a Shoot
               </Button>
             </div>
           </div>

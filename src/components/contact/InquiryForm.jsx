@@ -28,7 +28,6 @@ export default function InquiryForm() {
       return
     }
 
-    // Frontend-only: store inquiry locally until backend/CMS is ready
     try {
       const key = 'zealicon-inquiries'
       const existing = JSON.parse(localStorage.getItem(key) || '[]')
@@ -47,13 +46,13 @@ export default function InquiryForm() {
 
   if (status === 'sent') {
     return (
-      <div className="border border-line bg-elevated p-8">
-        <p className="label text-accent">Sent</p>
-        <h3 className="mt-3 font-display text-3xl">Thanks — we got your inquiry.</h3>
-        <p className="mt-4 text-sm leading-7 text-muted">
+      <div className="py-2">
+        <p className="text-sm text-muted">Sent</p>
+        <h3 className="mt-2 font-sans text-xl font-medium text-fg">Thanks — we got your inquiry.</h3>
+        <p className="mt-3 text-sm leading-7 text-muted">
           Our team will reply soon. For faster response, message us on WhatsApp.
         </p>
-        <div className="mt-8 flex flex-wrap gap-3">
+        <div className="mt-6 flex flex-wrap gap-3">
           <Button
             href={`https://wa.me/${studioContact.whatsapp}?text=${encodeURIComponent(
               'Hi, I just submitted an inquiry on the website.',
@@ -70,7 +69,7 @@ export default function InquiryForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="space-y-5" noValidate>
+    <form onSubmit={onSubmit} className="grid gap-5" noValidate>
       <Field label="Name *" htmlFor="inq-name">
         <input
           id="inq-name"
@@ -122,25 +121,31 @@ export default function InquiryForm() {
       <Field label="Message *" htmlFor="inq-message">
         <textarea
           id="inq-message"
-          className="field min-h-[140px] resize-y"
+          className="field min-h-[148px] resize-y"
           value={form.message}
           onChange={update('message')}
           placeholder="Tell us about your event, date, and location..."
         />
       </Field>
 
-      {error ? <p className="text-sm text-accent">{error}</p> : null}
+      {error ? <p className="text-sm text-muted">{error}</p> : null}
 
-      <Button type="submit">Send inquiry →</Button>
+      <div className="pt-1">
+        <Button type="submit" variant="cta" glow={false}>
+          Send inquiry →
+        </Button>
+      </div>
     </form>
   )
 }
 
 function Field({ label, htmlFor, children }) {
   return (
-    <label htmlFor={htmlFor} className="block">
-      <span className="label text-subtle">{label}</span>
-      <span className="mt-2 block">{children}</span>
-    </label>
+    <div className="min-w-0">
+      <label htmlFor={htmlFor} className="mb-2 block text-sm text-muted">
+        {label}
+      </label>
+      {children}
+    </div>
   )
 }

@@ -35,13 +35,13 @@ export default function PhotographyDetailPage() {
         <p className="mt-6 max-w-xl text-[1.05rem] leading-8 text-muted">{photo.description}</p>
       </header>
 
-      <div className="overflow-hidden">
-        <img src={gallery[0]} alt={photo.title} className="photo-zoom max-h-[92svh] w-full object-cover" />
+      <div className="aspect-[4/3] max-h-[92svh] overflow-hidden sm:aspect-[16/10]">
+        <img src={gallery[0]} alt={photo.title} className="photo-zoom h-full w-full object-cover" />
       </div>
 
       {gallery[1] ? (
-        <div className="mt-3 overflow-hidden">
-          <img src={gallery[1]} alt="" className="photo-zoom w-full object-cover" />
+        <div className="mt-3 aspect-[4/3] overflow-hidden sm:aspect-[16/10]">
+          <img src={gallery[1]} alt="" loading="lazy" className="photo-zoom h-full w-full object-cover" />
         </div>
       ) : null}
 
@@ -57,7 +57,7 @@ export default function PhotographyDetailPage() {
         <div className="container-site grid gap-3 pb-16 sm:grid-cols-2">
           {gallery.slice(2).map((src) => (
             <div key={src} className="overflow-hidden">
-              <img src={src} alt="" className="photo-zoom aspect-[4/5] w-full object-cover" />
+                <img src={src} alt="" loading="lazy" className="photo-zoom aspect-[4/5] w-full object-cover" />
             </div>
           ))}
         </div>
@@ -65,7 +65,7 @@ export default function PhotographyDetailPage() {
 
       <section className="border-t border-line">
         <div className="container-site py-16 md:py-24">
-          <div className="mb-10 flex items-end justify-between">
+          <div className="mb-10 flex flex-col items-start gap-4 sm:flex-row sm:items-end sm:justify-between">
             <h2 className="font-display text-3xl md:text-4xl">More photography</h2>
             <Link to="/photography" className="label text-muted transition duration-300 hover:text-accent">
               Back to photography

@@ -112,7 +112,7 @@ export function ContactPage() {
               <p className="text-sm text-muted">Studio email</p>
               <a
                 href={`mailto:${studioContact.email}`}
-                className="mt-1.5 block text-[0.95rem] text-fg transition duration-300 hover:text-muted"
+                className="mt-1.5 block break-all text-[0.95rem] text-fg transition duration-300 hover:text-muted sm:break-normal"
               >
                 {studioContact.email}
               </a>
@@ -123,7 +123,7 @@ export function ContactPage() {
                 href={`https://wa.me/${studioContact.whatsapp}`}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-1.5 block text-[0.95rem] text-fg transition duration-300 hover:text-muted"
+                className="mt-1.5 block break-words text-[0.95rem] text-fg transition duration-300 hover:text-muted"
               >
                 {studioContact.phoneDisplay}
               </a>

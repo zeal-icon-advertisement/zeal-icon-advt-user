@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
-import { NavLink, useLocation, useNavigate } from 'react-router-dom'
-import Wordmark from '../brand/Wordmark'
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import SoonBadge from '../ui/SoonBadge'
 import Button from '../ui/Button'
 import { NAV_LINKS } from '../../lib/navigation'
@@ -47,7 +46,7 @@ export default function Header() {
       >
         <button
           type="button"
-          className="inline-flex h-10 w-10 shrink-0 items-center justify-center text-current transition duration-300 hover:text-accent lg:hidden"
+          className="inline-flex h-10 w-10 shrink-0 items-center justify-center text-current transition duration-300 hover:text-accent xl:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-label="Menu"
@@ -55,12 +54,18 @@ export default function Header() {
           {open ? <CloseIcon /> : <MenuIcon />}
         </button>
 
-        <div className="flex min-w-0 items-center self-center">
-          <Wordmark compact={compact} />
-        </div>
+        <Link
+          to="/"
+          aria-label="Zealicon Advertisement home"
+          className="mr-2 inline-flex min-w-0 items-center self-center transition duration-300 hover:opacity-80"
+        >
+          <span className="font-display text-[1.05rem] leading-none tracking-tight text-current sm:text-[1.15rem] md:text-[1.25rem]">
+            Zealicon Advertisement
+          </span>
+        </Link>
 
         <nav
-          className="absolute left-1/2 hidden -translate-x-1/2 items-center justify-center gap-6 xl:gap-8 lg:flex"
+          className="absolute left-1/2 hidden -translate-x-1/2 items-center justify-center gap-6 xl:flex xl:gap-8"
           aria-label="Primary"
         >
           {NAV_LINKS.map((link) => (
@@ -83,7 +88,7 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="ml-auto hidden shrink-0 lg:block">
+        <div className="ml-auto hidden shrink-0 xl:block">
           <Button
             to="/contact"
             variant="cta"
@@ -96,7 +101,7 @@ export default function Header() {
 
       {open ? (
         <nav
-          className="max-h-[calc(100svh-4rem)] overflow-y-auto bg-elevated px-5 py-6 text-fg lg:hidden"
+          className="max-h-[calc(100svh-4.5rem)] overflow-y-auto bg-elevated px-5 py-6 text-fg xl:hidden"
           aria-label="Mobile"
         >
           {NAV_LINKS.map((link) => (

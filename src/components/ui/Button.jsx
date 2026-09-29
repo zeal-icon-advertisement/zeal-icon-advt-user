@@ -20,7 +20,7 @@ export default function Button({
 }) {
   const tone = variant || (ghost ? 'ghost' : 'solid')
   const shine = glow ?? tone === 'cta'
-  const cls = `inline-flex items-center justify-center gap-2 px-6 py-3 text-[0.68rem] font-semibold tracking-[0.18em] uppercase transition duration-300 ease-out will-change-transform hover:scale-[1.03] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-45 disabled:shadow-none disabled:hover:scale-100 ${variants[tone]} ${shine && tone === 'cta' ? 'btn-cta' : ''} ${className}`
+  const cls = `inline-flex items-center justify-center gap-2 whitespace-nowrap px-6 py-3 text-[0.68rem] font-semibold tracking-[0.18em] uppercase transition duration-300 ease-out will-change-transform hover:scale-[1.03] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-45 disabled:shadow-none disabled:hover:scale-100 ${variants[tone]} ${shine && tone === 'cta' ? 'btn-cta' : ''} ${className}`
 
   if (to) {
     return (

@@ -18,21 +18,25 @@ export default function Hero({ photograph }) {
   }, [])
 
   return (
-    <section className="relative min-h-[100svh] overflow-hidden bg-bg">
-      {photograph ? (
-        <div
-          className="absolute inset-0 h-[118%] w-full will-change-transform"
-          style={{ transform: `translate3d(0, ${offset}px, 0)` }}
-        >
-          <img src={photograph.imageUrl} alt="" className="hero-image h-full w-full object-cover" />
-        </div>
-      ) : null}
-      <div className="absolute inset-0 bg-linear-to-t from-bg via-bg/50 to-black/25" />
+    <section className="relative min-h-[84svh] overflow-hidden bg-bg sm:min-h-[100svh]">
+      <div
+        className="absolute inset-0 h-[118%] w-full will-change-transform"
+        style={{ transform: `translate3d(0, ${offset}px, 0)` }}
+      >
+        <img
+          src={photograph?.imageUrl || '/website-content/hero.jpg'}
+          alt=""
+          fetchPriority="high"
+          decoding="async"
+          className="hero-image h-full w-full object-cover"
+        />
+      </div>
+      <div className="absolute inset-0 bg-linear-to-t from-bg via-bg/60 to-black/35" />
 
-      <div className="container-site relative flex min-h-[100svh] flex-col justify-end pb-12 pt-28 md:pb-20 md:pt-32">
+      <div className="container-site relative flex min-h-[84svh] flex-col justify-end pb-12 pt-28 sm:min-h-[100svh] md:pb-20 md:pt-32">
         <h1 className="hero-copy max-w-4xl font-display text-[clamp(2.35rem,10vw,6.2rem)] leading-[0.92]">
           Zeal Icon
-          <span className="hero-copy-delay mt-1 block italic text-[#e6d4b0] [text-shadow:0_2px_18px_rgb(0_0_0_/_0.45)] md:mt-2">
+          <span className="hero-copy-delay mt-1 block italic text-accent [text-shadow:0_2px_18px_rgb(0_0_0_/_0.45)] md:mt-2">
             Advertisement
           </span>
         </h1>

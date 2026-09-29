@@ -9,9 +9,9 @@ import { studioContact } from '../../data/placeholderContent'
 export default function Footer() {
   return (
     <footer className="relative z-0 border-t border-line bg-elevated">
-      <div className="container-site py-12 md:py-14">
+      <div className="container-site min-w-0 py-10 sm:py-12 md:py-14">
         <div className="grid gap-10 md:grid-cols-12 md:items-start md:gap-8">
-          <div className="md:col-span-5">
+          <div className="min-w-0 md:col-span-5">
             <Wordmark to="/" />
             <p className="mt-4 max-w-xs text-sm leading-7 text-muted">
               Photography now. Magazines and articles soon.
@@ -21,7 +21,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="md:col-span-3">
+          <div className="min-w-0 md:col-span-3">
             <p className="label text-subtle">Explore</p>
             <ul className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3 md:grid-cols-1">
               {NAV_LINKS.map((link) => (
@@ -38,18 +38,18 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="md:col-span-4 md:text-right">
+          <div className="min-w-0 md:col-span-4 md:text-right">
             <p className="label text-subtle">Studio</p>
             <div className="mt-4 space-y-3 text-sm leading-7 text-muted">
               <a
                 href={`mailto:${studioContact.email}`}
-                className="block transition duration-300 hover:text-fg"
+                className="block break-all transition duration-300 hover:text-fg sm:break-normal"
               >
                 {studioContact.email}
               </a>
               <a
                 href={`tel:+${studioContact.whatsapp}`}
-                className="block transition duration-300 hover:text-fg"
+                className="block break-words transition duration-300 hover:text-fg"
               >
                 {studioContact.phoneDisplay}
               </a>
@@ -65,11 +65,11 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-line">
-        <div className="container-site flex flex-col gap-2 py-5 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs text-subtle">
+        <div className="container-site flex min-w-0 flex-col gap-2 py-5 sm:flex-row sm:items-center sm:justify-between">
+          <p className="min-w-0 text-xs text-subtle">
             © {new Date().getFullYear()} Zeal Icon Advertisement
           </p>
-          <p className="text-xs text-subtle">Photography · Magazine · Articles</p>
+          <p className="min-w-0 text-xs text-subtle">Photography · Magazine · Articles</p>
         </div>
       </div>
     </footer>

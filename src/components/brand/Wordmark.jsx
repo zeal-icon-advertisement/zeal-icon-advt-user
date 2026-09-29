@@ -26,7 +26,7 @@ export default function Wordmark({ compact = false, to = '/' }) {
     <Link
       to={to}
       aria-label="Zeal Icon Advertisement home"
-      className="inline-flex h-full min-w-0 items-center self-center transition duration-300 hover:opacity-80 ml-1 sm:ml-2 md:ml-3"
+      className="inline-flex min-w-0 items-center self-center transition duration-300 hover:opacity-80"
     >
       {inner}
     </Link>

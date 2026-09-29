@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
+import Wordmark from '../brand/Wordmark'
 import SoonBadge from '../ui/SoonBadge'
 import Button from '../ui/Button'
 import { NAV_LINKS } from '../../lib/navigation'
@@ -54,15 +55,9 @@ export default function Header() {
           {open ? <CloseIcon /> : <MenuIcon />}
         </button>
 
-        <Link
-          to="/"
-          aria-label="Zealicon Advertisement home"
-          className="mr-2 inline-flex min-w-0 items-center self-center transition duration-300 hover:opacity-80"
-        >
-          <span className="font-display text-[1.05rem] leading-none tracking-tight text-current sm:text-[1.15rem] md:text-[1.25rem]">
-            Zealicon Advertisement
-          </span>
-        </Link>
+        <div className="ml-auto sm:ml-0">
+          <Wordmark compact={compact} />
+        </div>
 
         <nav
           className="absolute left-1/2 hidden -translate-x-1/2 items-center justify-center gap-6 xl:flex xl:gap-8"

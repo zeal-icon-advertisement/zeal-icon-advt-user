@@ -1,18 +1,27 @@
 import { useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { PHOTOGRAPHY_CATEGORIES } from '../lib/navigation'
-import { usePhotographs } from '../hooks/usePhotographs'
-import PhotoCard from '../components/photography/PhotoCard'
+import { getYouTubeVideoId } from '../lib/youtube'
+import GalleryLightbox from '../components/photography/GalleryLightbox'
+import CategoryFilter from '../components/ui/CategoryFilter'
 import Reveal from '../components/ui/Reveal'
 
+const MEDIA_FILTERS = [
+  { name: 'Photos', slug: 'photos' },
+  { name: 'Videos', slug: 'videos' },
+]
+
+const MEDIA_TYPES = { photos: 'photo', videos: 'video' }
+
 export default function PhotographyPage() {
-  const photographs = usePhotographs()
   const [params, setParams] = useSearchParams()
   const initialCategory = params.get('category') || PHOTOGRAPHY_CATEGORIES[0].slug
   const initialSubItem = params.get('subItem') || PHOTOGRAPHY_CATEGORIES[0].subItems[0].slug
   const [openCategory, setOpenCategory] = useState(null)
   const [activeCategory, setActiveCategory] = useState(initialCategory)
   const [activeSubItem, setActiveSubItem] = useState(initialSubItem)
+  const [activeMediaType, setActiveMediaType] = useState('all')
+  const [lightboxIndex, setLightboxIndex] = useState(null)
 
   const currentCategory =
     PHOTOGRAPHY_CATEGORIES.find((category) => category.slug === activeCategory) ||
@@ -21,9 +30,54 @@ export default function PhotographyPage() {
   const currentSubItem =
     currentCategory.subItems.find((item) => item.slug === activeSubItem) || currentCategory.subItems[0]
 
-  const filtered = useMemo(() => {
-    return photographs.filter((item) => item.categorySlug === currentCategory.slug)
-  }, [currentCategory.slug, photographs])
+  const mediaItems = useMemo(
+    () => [
+      ...currentSubItem.gallery.map((image, index) => {
+        const item = typeof image === 'string' ? { src: image, orientation: 'landscape' } : image
+        return {
+          id: `${currentSubItem.slug}-photo-${index}`,
+          type: 'photo',
+          src: item.src,
+          orientation: item.orientation,
+          title: `${currentSubItem.name} sample`,
+        }
+      }),
+      ...(currentSubItem.videos || []).map((video) => {
+        const youtubeId = getYouTubeVideoId(video.videoUrl)
+        return {
+          ...video,
+          thumbnailUrl:
+            video.thumbnailUrl ||
+            (youtubeId ? `https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg` : undefined),
+        }
+      }),
+    ],
+    [currentSubItem],
+  )
+
+  const visibleMedia = useMemo(
+    () =>
+      activeMediaType === 'all'
+        ? mediaItems
+        : mediaItems.filter((item) => item.type === MEDIA_TYPES[activeMediaType]),
+    [activeMediaType, mediaItems],
+  )
+
+  const galleryRows = useMemo(
+    () =>
+      ['photo', 'video'].flatMap((type) =>
+        ['landscape', 'portrait']
+          .map((orientation) => ({
+            type,
+            orientation,
+            items: visibleMedia
+              .filter((item) => item.type === type && item.orientation === orientation)
+              .map((item) => ({ item, index: visibleMedia.indexOf(item) })),
+          }))
+          .filter((row) => row.items.length),
+      ),
+    [visibleMedia],
+  )
 
   function setSelection(categorySlug, subSlug) {
     const next = new URLSearchParams(params)
@@ -33,6 +87,7 @@ export default function PhotographyPage() {
     setActiveCategory(categorySlug)
     setActiveSubItem(subSlug)
     setOpenCategory(null)
+    setLightboxIndex(null)
   }
 
   function handleCategoryHover(categorySlug) {
@@ -43,7 +98,6 @@ export default function PhotographyPage() {
   return (
     <>
       <section className="container-site py-16 md:py-24">
-        <p className="label text-accent">Archive</p>
         <h1 className="mt-4 max-w-3xl font-display text-5xl leading-[0.95] md:text-7xl">
           Photography &amp; Videography
         </h1>
@@ -78,6 +132,7 @@ export default function PhotographyPage() {
                   <button
                     type="button"
                     onClick={() => {
+                      setLightboxIndex(null)
                       setOpenCategory(open ? null : category.slug)
                       if (!selected) {
                         setActiveCategory(category.slug)
@@ -133,39 +188,76 @@ export default function PhotographyPage() {
           </p>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {currentSubItem.gallery.map((image, index) => (
-            <Reveal key={`${currentSubItem.slug}-${index}`} delay={index * 70}>
-              <div className="overflow-hidden border border-line bg-soft">
-                <img
-                  src={image}
-                  alt={`${currentSubItem.name} sample`}
-                  className="photo-zoom aspect-[3/4] w-full object-cover"
-                />
-              </div>
-            </Reveal>
-          ))}
+        <div className="mb-6">
+          <CategoryFilter
+            categories={MEDIA_FILTERS}
+            active={activeMediaType}
+            onChange={(type) => {
+              setActiveMediaType(type)
+              setLightboxIndex(null)
+            }}
+            label="Gallery media type"
+          />
         </div>
 
-        <div className="mt-16">
-          <p className="label text-subtle">Related archive</p>
-          <div className="mt-6 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-12">
-            {filtered.map((photo, index) => {
-              const span =
-                index % 7 === 0
-                  ? 'lg:col-span-8'
-                  : index % 5 === 0
-                    ? 'lg:col-span-7'
-                    : 'lg:col-span-4'
-              return (
-                <Reveal key={photo.id} className={span} delay={(index % 6) * 50}>
-                  <PhotoCard photo={photo} large={index % 7 === 0} />
-                </Reveal>
-              )
-            })}
+        {galleryRows.length ? (
+          <div className="space-y-4">
+            {galleryRows.map((row) => (
+              <div
+                key={`${row.type}-${row.orientation}`}
+                className={
+                  row.orientation === 'landscape'
+                    ? 'grid grid-cols-1 gap-2 sm:grid-cols-2'
+                    : 'flex justify-center'
+                }
+              >
+                {row.items.map(({ item, index }, itemIndex) => (
+                  <Reveal
+                    key={item.id}
+                    className={row.orientation === 'portrait' ? 'w-full max-w-md' : 'min-w-0'}
+                    delay={itemIndex * 70}
+                  >
+                    <button
+                      type="button"
+                      onClick={() => setLightboxIndex(index)}
+                      aria-label={`Open ${item.type === 'video' ? 'video' : 'photo'}: ${item.title}`}
+                      className="group relative block w-full overflow-hidden border border-line bg-soft text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+                    >
+                      <span
+                        className={`relative block overflow-hidden bg-soft ${
+                          row.orientation === 'landscape' ? 'aspect-[3/2]' : 'aspect-[3/4]'
+                        }`}
+                      >
+                        <img
+                          src={item.type === 'video' ? item.thumbnailUrl : item.src}
+                          alt={item.title}
+                          loading="lazy"
+                          decoding="async"
+                          className="photo-zoom block h-full w-full object-contain"
+                        />
+                        {item.type === 'video' ? (
+                          <span className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/10">
+                            <span className="flex size-12 items-center justify-center rounded-full border border-white/75 bg-black/40 text-white transition group-hover:scale-110">
+                              <span aria-hidden="true" className="ml-1 border-y-[6px] border-y-transparent border-l-[9px] border-l-current" />
+                            </span>
+                          </span>
+                        ) : null}
+                      </span>
+                    </button>
+                  </Reveal>
+                ))}
+              </div>
+            ))}
           </div>
-        </div>
+        ) : (
+          <p className="py-12 text-center text-muted">
+            No {activeMediaType} in this selection yet.
+          </p>
+        )}
       </section>
+      {lightboxIndex !== null ? (
+        <GalleryLightbox items={visibleMedia} index={lightboxIndex} setIndex={setLightboxIndex} />
+      ) : null}
     </>
   )
 }

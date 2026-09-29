@@ -1,19 +1,70 @@
 const portraitImage = (id, extra = '') => {
-  const options = 'auto=format&fit=crop&crop=entropy&w=900&h=1350&q=80'
+  const options = 'auto=format&fit=max&w=1400&q=80'
   return `https://images.unsplash.com/${id}?${options}${extra ? `&${extra}` : ''}`
 }
 
-const gallery = (...ids) => ids.map((id) => portraitImage(id))
+const gallery = (...items) =>
+  items.map((item) => {
+    if (typeof item === 'string') return portraitImage(item)
+    return { src: portraitImage(item.id), orientation: item.orientation }
+  })
 
-const subItem = (name, slug, images) => ({ name, slug, gallery: images })
+const subItem = (name, slug, images, videos = []) => ({ name, slug, gallery: images, videos })
 
 export const PHOTOGRAPHY_CATEGORIES = [
   {
     name: 'Weddings & Celebrations',
     slug: 'weddings-celebrations',
     subItems: [
-      subItem('Wedding', 'wedding', gallery('photo-1520854221256-17451cc331bf', 'photo-1522673607200-164d1b6ce486', 'photo-1519741497674-611481863552')),
-      subItem('Pre-Wedding', 'pre-wedding', gallery('photo-1529156069898-49953e39b3ac', 'photo-1529636798458-92182e662485', 'photo-1516589178581-6cd7833ae3b2')),
+      subItem(
+        'Wedding',
+        'wedding',
+        [
+          { src: '/website-content/photo-01.jpg', orientation: 'landscape' },
+          { src: '/website-content/photo-02.jpg', orientation: 'landscape' },
+          { src: '/website-content/photo-03.jpg', orientation: 'portrait' },
+        ],
+        [
+          {
+            id: 'wedding-video-01',
+            type: 'video',
+            title: 'A garden in motion',
+            orientation: 'landscape',
+            thumbnailUrl: '/website-content/photo-05.jpg',
+            videoUrl: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
+          },
+          {
+            id: 'wedding-video-02',
+            type: 'video',
+            title: 'The celebration',
+            orientation: 'landscape',
+            thumbnailUrl: '/website-content/photo-01.jpg',
+            videoUrl: 'https://media.w3.org/2010/05/sintel/trailer_hd.mp4',
+          },
+          {
+            id: 'wedding-video-03',
+            type: 'video',
+            title: 'Portrait video sample',
+            orientation: 'portrait',
+            thumbnailUrl: '/website-content/photo-04.jpg',
+            videoUrl: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
+          },
+        ],
+      ),
+      subItem(
+        'Pre-Wedding',
+        'pre-wedding',
+        gallery('photo-1529156069898-49953e39b3ac', 'photo-1529636798458-92182e662485', 'photo-1516589178581-6cd7833ae3b2'),
+        [
+          {
+            id: 'pre-wedding-video-01',
+            type: 'video',
+            title: 'Pre-Wedding | Sanket And Pallavi | Pirticha Yaad',
+            orientation: 'landscape',
+            videoUrl: 'https://youtu.be/Q1i49MI6iOI?si=0xeb7Hs33rysSfUQ',
+          },
+        ],
+      ),
       subItem('Birthday', 'birthday', gallery('photo-1519741497674-611481863552', 'photo-1529156069898-49953e39b3ac', 'photo-1522673607200-164d1b6ce486')),
       subItem('Maternity', 'maternity', gallery('photo-1517841905240-472988babdf9', 'photo-1524504388940-b1c1722653e1', 'photo-1529156069898-49953e39b3ac')),
       subItem('House Warming', 'house-warming', gallery('photo-1494526585095-c41746248156', 'photo-1505693416388-ac5ce068fe85', 'photo-1505693416388-ac5ce068fe85')),

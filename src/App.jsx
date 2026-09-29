@@ -2,7 +2,6 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import Layout from './components/layout/Layout'
 import HomePage from './pages/HomePage'
 import PhotographyPage from './pages/PhotographyPage'
-import PhotographyDetailPage from './pages/PhotographyDetailPage'
 import {
   AboutPage,
   ArticlesPage,
@@ -18,7 +17,6 @@ export default function App() {
         <Route element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="photography" element={<PhotographyPage />} />
-          <Route path="photography/:slug" element={<PhotographyDetailPage />} />
           <Route path="book" element={<Navigate to="/contact" replace />} />
           <Route path="magazines" element={<MagazinesPage />} />
           <Route path="articles" element={<ArticlesPage />} />

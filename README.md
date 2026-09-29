@@ -31,8 +31,8 @@ The **admin / CMS portal** will live in a separate repository.
 - Premium dark-first UI (light mode toggle in header)
 - Mobile-first layout (hamburger on the left on mobile)
 - Responsive homepage: Hero → Services → Explore Photography → Footer
-- Photography archive with category filters
-- Photography project detail pages + fullscreen image viewer
+- Photography gallery with category and media filters
+- Fullscreen photo and video viewer
 - Magazines & Articles coming-soon pages
 - About & Contact pages
 
@@ -76,12 +76,11 @@ zeal-icon-advt-user/
 │   │   ├── contact/        # Inquiry form, social inquiry
 │   │   ├── home/           # Hero, Services, Explore
 │   │   ├── layout/         # Header, Footer, Layout
-│   │   ├── photography/    # Photo cards, image viewer
+│   │   ├── photography/    # Gallery lightbox
 │   │   └── ui/             # Buttons, filters, badges, social icons
 │   ├── context/            # Theme (dark / light)
 │   ├── data/               # Placeholder content + studio contact links
-│   ├── hooks/              # Photography data hooks
-│   ├── lib/                # Supabase, content/booking helpers, navigation
+│   ├── lib/                # Supabase, booking helpers, navigation
 │   ├── pages/              # Route pages
 │   ├── App.jsx
 │   ├── main.jsx
@@ -101,8 +100,7 @@ zeal-icon-advt-user/
 | Path | Page |
 |------|------|
 | `/` | Homepage |
-| `/photography` | Photography archive |
-| `/photography/:slug` | Project detail |
+| `/photography` | Photography gallery |
 | `/book` | Book a shoot (availability + booking) |
 | `/contact` | Inquiry form + social links |
 | `/about` | About the studio |

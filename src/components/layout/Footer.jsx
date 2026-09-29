@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import Wordmark from '../brand/Wordmark'
 import SoonBadge from '../ui/SoonBadge'
 import Button from '../ui/Button'
 import SocialIcons from '../ui/SocialIcons'
@@ -11,11 +12,7 @@ export default function Footer() {
       <div className="container-site min-w-0 py-10 sm:py-12 md:py-14">
         <div className="grid gap-10 md:grid-cols-12 md:items-start md:gap-8">
           <div className="min-w-0 md:col-span-5">
-            <Link to="/" className="inline-flex min-w-0 items-center transition duration-300 hover:text-fg">
-              <span className="font-display text-[1.4rem] leading-none tracking-tight text-fg md:text-[1.6rem]">
-                Zealicon Advertisement
-              </span>
-            </Link>
+            <Wordmark to="/" />
             <p className="mt-4 max-w-xs text-sm leading-7 text-muted">
               Photography now. Magazines and articles soon.
             </p>

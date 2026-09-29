@@ -1,11 +1,11 @@
-export default function CategoryFilter({ categories, active, onChange }) {
+export default function CategoryFilter({ categories, active, onChange, label = 'Photography categories' }) {
   const items = [{ name: 'All', slug: 'all' }, ...categories]
 
   return (
     <div
       className="category-filter-scroll flex min-w-0 gap-2 overflow-x-auto border-b border-line pb-3 [-ms-overflow-style:none] [scrollbar-width:none] sm:gap-3"
       role="tablist"
-      aria-label="Photography categories"
+      aria-label={label}
     >
       {items.map((item) => {
         const selected = active === item.slug

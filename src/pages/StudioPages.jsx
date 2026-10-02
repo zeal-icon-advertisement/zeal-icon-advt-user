@@ -8,13 +8,13 @@ import Reveal from '../components/ui/Reveal'
 export default function ComingSoonPage({ kicker, title, description, notice }) {
   return (
     <section className="container-site flex min-h-[70svh] flex-col justify-center py-20 md:py-28">
-      <div className="soon-page mx-auto w-full max-w-2xl overflow-hidden rounded-xl border border-line bg-elevated">
+      <div className="glass soon-page mx-auto w-full max-w-2xl overflow-hidden rounded-xl border border-line bg-elevated">
         <div className="px-6 py-10 text-center sm:px-10 md:px-12 md:py-12">
           <p className="mx-auto inline-flex items-center gap-2 rounded-full border border-line px-4 py-2 text-[0.68rem] font-semibold tracking-[0.18em] text-fg uppercase">
             <span className="soon-dot" aria-hidden="true" />
             Coming soon
           </p>
-          <p className="mt-6 text-sm tracking-wide text-muted uppercase">{kicker}</p>
+          <p className="mt-6 text-sm tracking-wide text-subtle uppercase">{kicker}</p>
           <h1 className="mt-3 font-display text-4xl leading-[1.05] text-fg md:text-5xl">{title}</h1>
         </div>
 
@@ -30,7 +30,7 @@ export default function ComingSoonPage({ kicker, title, description, notice }) {
             </Button>
             <Link
               to="/contact"
-              className="text-[0.95rem] text-muted underline decoration-muted/50 underline-offset-4 transition duration-300 hover:text-fg hover:decoration-fg"
+              className="text-[0.95rem] text-muted underline decoration-muted/50 underline-offset-4 transition duration-300 hover:text-white hover:decoration-accent"
             >
               Get in touch
             </Link>
@@ -67,7 +67,7 @@ export function AboutPage() {
   return (
     <section className="container-site py-24 md:py-32">
       <Reveal>
-        <p className="label text-accent">About</p>
+        <p className="label text-text-accent">About</p>
         <h1 className="mt-4 max-w-3xl font-display text-4xl leading-[0.95] md:text-6xl">
           Zeal Icon Advertisement
         </h1>
@@ -87,7 +87,7 @@ export function ContactPage() {
   return (
     <section className="container-site py-16 md:py-24">
       <div className="max-w-xl">
-        <p className="text-sm tracking-wide text-muted uppercase">Contact</p>
+        <p className="text-sm tracking-wide text-subtle uppercase">Contact</p>
         <h1 className="mt-3 font-sans text-3xl font-medium tracking-tight text-fg md:text-4xl">
           Inquiry
         </h1>
@@ -97,14 +97,14 @@ export function ContactPage() {
       </div>
 
       <div className="mt-12 grid items-start gap-8 lg:grid-cols-12 lg:gap-10">
-        <div className="rounded-xl border border-line bg-elevated p-6 md:p-8 lg:col-span-7">
+        <div className="glass rounded-xl border border-line bg-elevated p-6 md:p-8 lg:col-span-7">
           <h2 className="font-sans text-lg font-medium tracking-tight text-fg">Send a message</h2>
           <div className="mt-6">
             <InquiryForm />
           </div>
         </div>
 
-        <aside className="rounded-xl border border-line bg-elevated p-6 md:p-8 lg:col-span-5">
+        <aside className="glass rounded-xl border border-line bg-elevated p-6 md:p-8 lg:col-span-5">
           <SocialInquiry />
 
           <div className="mt-8 space-y-5 border-t border-line pt-8">
@@ -112,7 +112,7 @@ export function ContactPage() {
               <p className="text-sm text-muted">Studio email</p>
               <a
                 href={`mailto:${studioContact.email}`}
-                className="mt-1.5 block break-all text-[0.95rem] text-fg transition duration-300 hover:text-muted sm:break-normal"
+                className="mt-1.5 block break-all text-[0.95rem] text-muted transition duration-300 hover:text-white sm:break-normal"
               >
                 {studioContact.email}
               </a>
@@ -123,14 +123,14 @@ export function ContactPage() {
                 href={`https://wa.me/${studioContact.whatsapp}`}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-1.5 block break-words text-[0.95rem] text-fg transition duration-300 hover:text-muted"
+                className="mt-1.5 block break-words text-[0.95rem] text-text-accent transition duration-300 hover:text-white"
               >
                 {studioContact.phoneDisplay}
               </a>
             </div>
             <div>
               <p className="text-sm text-muted">Studio address</p>
-              <p className="mt-1.5 text-[0.95rem] leading-7 text-fg">{studioContact.address}</p>
+              <p className="mt-1.5 text-[0.95rem] leading-7 text-muted">{studioContact.address}</p>
             </div>
           </div>
         </aside>
@@ -142,9 +142,9 @@ export function ContactPage() {
 export function NotFoundPage() {
   return (
     <section className="container-site py-24 text-center md:py-32">
-      <p className="label text-accent">404</p>
+      <p className="label text-text-accent">404</p>
       <h1 className="mt-4 font-display text-4xl md:text-5xl">Page not found</h1>
-      <Link to="/photography" className="mt-8 inline-flex label text-muted transition duration-300 hover:text-accent">
+      <Link to="/photography" className="mt-8 inline-flex label text-muted transition duration-300 hover:text-white">
         Back to photography →
       </Link>
     </section>

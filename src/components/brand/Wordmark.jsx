@@ -13,7 +13,7 @@ export default function Wordmark({ compact = false, to = '/' }) {
         <span className="truncate font-display text-[1.1rem] tracking-tight text-fg sm:text-[1.2rem] md:text-[1.28rem]">
           Zeal Icon
         </span>
-        <span className="truncate text-[0.5rem] font-semibold tracking-[0.2em] text-fg/85 uppercase sm:text-[0.55rem] sm:tracking-[0.22em]">
+        <span className="truncate text-[0.5rem] font-semibold tracking-[0.2em] text-muted uppercase sm:text-[0.55rem] sm:tracking-[0.22em]">
           Advertisement
         </span>
       </span>
@@ -26,7 +26,7 @@ export default function Wordmark({ compact = false, to = '/' }) {
     <Link
       to={to}
       aria-label="Zeal Icon Advertisement home"
-      className="inline-flex min-w-0 items-center self-center transition duration-300 hover:opacity-80"
+      className="site-wordmark inline-flex min-w-0 items-center self-center transition duration-300 hover:opacity-80"
     >
       {inner}
     </Link>

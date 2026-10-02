@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 
 const variants = {
-  solid: 'btn-frame bg-fg text-invert hover:bg-[#ddd6c8]',
-  ghost: 'text-fg hover:text-muted',
-  cta: 'btn-frame relative rounded-xl bg-fg text-invert shadow-[0_10px_28px_rgb(243_239_230_/_0.08)] hover:bg-[#e8e2d4]',
+  solid: 'glass-primary btn-frame bg-fg text-invert hover:bg-[#ddd6c8]',
+  ghost: 'glass-control text-fg hover:text-accent',
+  cta: 'glass-primary btn-frame relative rounded-xl bg-fg text-invert shadow-[0_10px_28px_rgb(243_239_230_/_0.08)] hover:bg-[#e8e2d4]',
 }
 
 export default function Button({

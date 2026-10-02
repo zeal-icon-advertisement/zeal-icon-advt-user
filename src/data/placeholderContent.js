@@ -92,15 +92,19 @@ export const services = [
 /** Update these with real studio handles before launch */
 export const studioContact = {
   email: 'studio@zealicon.example',
-  phoneDisplay: '+91 98765 43210',
-  whatsapp: '7499774641',
+  phoneDisplay: '+91 84213 12972',
+  whatsapp: '918421312972',
   address: 'Koregaon Park, Pune, Maharashtra 411001',
-  instagram: 'https://instagram.com/zealiconadvertisement',
-  linkedin: 'https://www.linkedin.com/in/zeal-icon-advertisement-149a80426/',
+  instagram: 'https://www.instagram.com/zeal_icon_advt/',
+  facebook: 'https://www.facebook.com/zealiconadvtandfilmproduction',
+  youtube: 'https://www.youtube.com/@ZealIconAdvertisementAndFlimPr',
+  linkedin: 'https://www.linkedin.com/in/zeal-icon-advertisement-149a80426/?isSelfProfile=true',
 }
 
 export const socialLinks = [
   { id: 'instagram', label: 'Instagram', href: studioContact.instagram },
+  { id: 'facebook', label: 'Facebook', href: studioContact.facebook },
+  { id: 'youtube', label: 'YouTube', href: studioContact.youtube },
   { id: 'linkedin', label: 'LinkedIn', href: studioContact.linkedin },
   {
     id: 'whatsapp',

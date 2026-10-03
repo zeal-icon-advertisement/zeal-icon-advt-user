@@ -57,7 +57,7 @@ export default function GalleryLightbox({ items, index, setIndex }) {
               type="button"
               onClick={previous}
               aria-label="Previous media"
-              className="absolute left-0 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center bg-elevated/80 text-fg transition hover:text-accent sm:size-12"
+              className="glass-dark absolute left-0 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center bg-elevated/80 text-fg transition hover:text-accent sm:size-12"
             >
               <span aria-hidden="true" className="size-2 rotate-[135deg] border-b-2 border-r-2 border-current" />
             </button>
@@ -65,7 +65,7 @@ export default function GalleryLightbox({ items, index, setIndex }) {
               type="button"
               onClick={next}
               aria-label="Next media"
-              className="absolute right-0 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center bg-elevated/80 text-fg transition hover:text-accent sm:size-12"
+              className="glass-dark absolute right-0 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center bg-elevated/80 text-fg transition hover:text-accent sm:size-12"
             >
               <span aria-hidden="true" className="size-2 -rotate-45 border-b-2 border-r-2 border-current" />
             </button>
@@ -117,7 +117,7 @@ export default function GalleryLightbox({ items, index, setIndex }) {
           )}
         </div>
 
-        <p className="text-center text-sm text-fg/80">
+        <p className="text-center text-sm text-muted">
           {item.title} <span className="ml-2 text-muted">{index + 1} / {items.length}</span>
         </p>
       </div>

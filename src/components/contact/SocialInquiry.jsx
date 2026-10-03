@@ -11,7 +11,7 @@ export default function SocialInquiry() {
       <p className="mt-4 text-sm leading-6 text-muted">
         Tap a logo to message us on Instagram, WhatsApp, or LinkedIn.
         <br />
-        WhatsApp: {studioContact.phoneDisplay}
+        WhatsApp: <span className="text-text-accent">{studioContact.phoneDisplay}</span>
       </p>
     </div>
   )

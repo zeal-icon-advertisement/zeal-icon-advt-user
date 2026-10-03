@@ -91,10 +91,10 @@ export const services = [
 
 /** Update these with real studio handles before launch */
 export const studioContact = {
-  email: 'studio@zealicon.example',
+  email: 'ravishindephotography@gmail.com',
   phoneDisplay: '+91 84213 12972',
   whatsapp: '918421312972',
-  address: 'Koregaon Park, Pune, Maharashtra 411001',
+  address: 'Chandra Bhaga Corner, Ravet, Pimpri-Chinchwad, Maharashtra 412101',
   instagram: 'https://www.instagram.com/zeal_icon_advt/',
   facebook: 'https://www.facebook.com/zealiconadvtandfilmproduction',
   youtube: 'https://www.youtube.com/@ZealIconAdvertisementAndFlimPr',

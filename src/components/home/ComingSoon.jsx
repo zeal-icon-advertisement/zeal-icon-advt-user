@@ -5,7 +5,7 @@ export default function ComingSoon() {
   return (
     <section className="border-t border-line">
       <div className="container-site py-16 md:py-24">
-        <p className="label text-accent">Next</p>
+        <p className="label text-text-accent">Next</p>
         <h2 className="mt-3 max-w-xl font-display text-3xl md:text-5xl">
           More from the studio is on the way.
         </h2>
@@ -13,10 +13,10 @@ export default function ComingSoon() {
         <div className="mt-12 grid gap-4 md:grid-cols-2">
           <Link
             to="/magazines"
-            className="group relative flex min-h-[220px] flex-col justify-between overflow-hidden bg-soft p-8 transition duration-500 hover:-translate-y-0.5 hover:bg-accent-soft md:min-h-[280px]"
+            className="glass group relative flex min-h-[220px] flex-col justify-between overflow-hidden bg-soft p-8 transition duration-500 hover:-translate-y-0.5 hover:bg-accent-soft md:min-h-[280px]"
           >
             <div className="flex items-start justify-between gap-4">
-              <p className="label text-muted">Magazine</p>
+              <p className="label text-subtle">Magazine</p>
               <SoonBadge />
             </div>
             <div>
@@ -29,15 +29,15 @@ export default function ComingSoon() {
 
           <Link
             to="/articles"
-            className="group relative flex min-h-[220px] flex-col justify-between overflow-hidden bg-fg p-8 text-invert transition duration-500 hover:-translate-y-0.5 md:min-h-[280px]"
+            className="glass-light group relative flex min-h-[220px] flex-col justify-between overflow-hidden bg-fg p-8 text-invert transition duration-500 hover:-translate-y-0.5 md:min-h-[280px]"
           >
             <div className="flex items-start justify-between gap-4">
-              <p className="label text-invert/60">Articles</p>
+              <p className="label text-invert">Articles</p>
               <SoonBadge light />
             </div>
             <div>
               <h3 className="font-display text-3xl md:text-4xl">Stories & ideas</h3>
-              <p className="mt-3 max-w-xs text-sm leading-7 text-invert/65">
+              <p className="mt-3 max-w-xs text-sm leading-7 text-invert">
                 Writing from the studio — coming soon.
               </p>
             </div>

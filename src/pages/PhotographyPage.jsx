@@ -149,7 +149,7 @@ export default function PhotographyPage() {
                   </button>
 
                   {open ? (
-                    <div className="absolute left-0 top-full z-30 w-[min(18rem,80vw)] rounded border border-line bg-elevated p-2 shadow-[0_20px_50px_rgba(0,0,0,0.22)] pointer-events-auto" style={{ marginTop: 0 }}>
+                    <div className="glass glass-strong absolute left-0 top-full z-30 w-[min(18rem,80vw)] rounded border border-line bg-elevated p-2 shadow-[0_20px_50px_rgba(0,0,0,0.22)] pointer-events-auto" style={{ marginTop: 0 }}>
                       {category.subItems.map((item) => {
                         const isSelected = activeSubItem === item.slug && activeCategory === category.slug
                         return (
@@ -158,7 +158,7 @@ export default function PhotographyPage() {
                             type="button"
                             onClick={() => setSelection(category.slug, item.slug)}
                             className={`flex w-full items-center justify-between rounded px-3 py-2 text-left text-sm transition duration-300 ${
-                              isSelected ? 'bg-soft text-fg' : 'text-muted hover:bg-soft hover:text-fg'
+                              isSelected ? 'glass-inner bg-soft text-fg' : 'glass-inner text-muted hover:bg-soft hover:text-fg'
                             }`}
                           >
                             <span>{item.name}</span>
@@ -221,10 +221,10 @@ export default function PhotographyPage() {
                       type="button"
                       onClick={() => setLightboxIndex(index)}
                       aria-label={`Open ${item.type === 'video' ? 'video' : 'photo'}: ${item.title}`}
-                      className="group relative block w-full overflow-hidden border border-line bg-soft text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+                      className="glass group relative block w-full overflow-hidden border border-line bg-soft text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
                     >
                       <span
-                        className={`relative block overflow-hidden bg-soft ${
+                        className={`glass-inner relative block overflow-hidden bg-soft ${
                           row.orientation === 'landscape' ? 'aspect-[3/2]' : 'aspect-[3/4]'
                         }`}
                       >
@@ -237,7 +237,7 @@ export default function PhotographyPage() {
                         />
                         {item.type === 'video' ? (
                           <span className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/10">
-                            <span className="flex size-12 items-center justify-center rounded-full border border-white/75 bg-black/40 text-white transition group-hover:scale-110">
+                            <span className="glass-dark flex size-12 items-center justify-center rounded-full border border-white/75 bg-black/40 text-white transition group-hover:scale-110">
                               <span aria-hidden="true" className="ml-1 border-y-[6px] border-y-transparent border-l-[9px] border-l-current" />
                             </span>
                           </span>

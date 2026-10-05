@@ -8,7 +8,7 @@ import { studioContact } from '../../data/placeholderContent'
 
 export default function Footer() {
   return (
-    <footer className="relative z-0 border-t border-line bg-elevated">
+    <footer className="site-footer glass relative z-0 border-t border-line bg-elevated">
       <div className="container-site min-w-0 py-10 sm:py-12 md:py-14">
         <div className="grid gap-10 md:grid-cols-12 md:items-start md:gap-8">
           <div className="min-w-0 md:col-span-5">
@@ -28,7 +28,7 @@ export default function Footer() {
                 <li key={link.to}>
                   <Link
                     to={link.to}
-                    className="inline-flex items-center gap-2 text-sm text-muted transition duration-300 hover:text-fg hover:translate-x-0.5"
+                    className="inline-flex items-center gap-2 text-sm text-muted transition duration-300 hover:text-white hover:translate-x-0.5"
                   >
                     {link.label}
                     {link.soon ? <SoonBadge /> : null}
@@ -43,13 +43,13 @@ export default function Footer() {
             <div className="mt-4 space-y-3 text-sm leading-7 text-muted">
               <a
                 href={`mailto:${studioContact.email}`}
-                className="block break-all transition duration-300 hover:text-fg sm:break-normal"
+                className="block break-all transition duration-300 hover:text-white sm:break-normal"
               >
                 {studioContact.email}
               </a>
               <a
                 href={`tel:+${studioContact.whatsapp}`}
-                className="block break-words transition duration-300 hover:text-fg"
+                className="block break-words text-text-accent transition duration-300 hover:text-white"
               >
                 {studioContact.phoneDisplay}
               </a>

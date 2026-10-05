@@ -38,7 +38,7 @@ export default function Services() {
       <div className="py-16 md:py-24">
         <div className="container-site mb-8 flex flex-col gap-5 md:mb-10 md:flex-row md:items-end md:justify-between md:gap-5">
           <Reveal>
-            <p className="label text-accent">Services</p>
+            <p className="label text-text-accent">Services</p>
             <h2 className="font-service mt-3 text-4xl italic md:text-5xl">What we offer</h2>
           </Reveal>
           <Reveal delay={80}>
@@ -76,7 +76,7 @@ function ServiceTrack() {
           <Link
             key={service.id}
             to={service.href}
-            className="group flex min-h-[220px] w-[min(78vw,320px)] shrink-0 flex-col justify-between border border-line bg-elevated p-6 transition duration-500 hover:border-accent/50"
+            className="glass group flex min-h-[220px] w-[min(78vw,320px)] shrink-0 flex-col justify-between border border-line bg-elevated p-6 transition duration-500 hover:border-accent/50"
           >
             <div className="flex items-start justify-between gap-3">
               <p className="label text-subtle">
@@ -89,7 +89,7 @@ function ServiceTrack() {
                 {service.title}
               </h3>
               <p className="mt-3 text-sm leading-6 text-muted">{service.description}</p>
-              <p className="mt-5 label text-muted transition duration-300 group-hover:text-accent">
+              <p className="mt-5 label text-muted transition duration-300 group-hover:text-white">
                 {soon ? 'Coming soon →' : 'View photography →'}
               </p>
             </div>
